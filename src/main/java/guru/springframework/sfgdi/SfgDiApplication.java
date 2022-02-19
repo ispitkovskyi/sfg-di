@@ -17,9 +17,11 @@ public class SfgDiApplication {
 		//and puts created instances into a Spring context
 		// NO NEED to explicitly create instance of MyController class
 		//By default when Spring creates a bin, the bin name will be same as the class name, but in camel-case style:
+
 		MyController myController = (MyController) ctx.getBean("myController");
-		String greetings = myController.sayHello();
-		System.out.println(greetings);
+		//String greetings = myController.sayHello(); - don't create instance explicitly, let Spring do it due to @Primary annotation
+		System.out.println("======= @Primary Bean example");
+		System.out.println(myController.sayHello());
 
 		System.out.println("======= Property");
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
