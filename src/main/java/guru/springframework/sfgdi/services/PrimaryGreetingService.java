@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 //For example see constructor in the MyController class
 @Primary
 @Service
-public class PrimaryGreetingService implements GreetingService{
+public class PrimaryGreetingService implements GreetingService {
+
     @Override
     public String sayGreeting() {
         return "Hello World - From the PRIMARY Bean";

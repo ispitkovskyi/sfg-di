@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class SetterInjectedControllerTest {
+
     SetterInjectedController controller;
 
     @BeforeEach
@@ -16,5 +17,6 @@ class SetterInjectedControllerTest {
     @Test
     void getGreeting() {
         System.out.println(controller.getGreeting());
+
     }
 }

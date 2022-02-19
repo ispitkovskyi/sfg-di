@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 //THE BEST :) WAY FOR DEPENDENCY INJECTION
 @Controller
 public class ConstructorInjectedController {
-
     private final GreetingService greetingService;
 
     //@Autowired - NOT NECESSARY FOR CONSTRUCTORS
@@ -19,7 +18,7 @@ public class ConstructorInjectedController {
         this.greetingService = greetingService;
     }
 
-    public String getGreeting() {
+    public String getGreeting(){
         return greetingService.sayGreeting();
     }
 }

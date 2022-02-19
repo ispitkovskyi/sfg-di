@@ -20,7 +20,7 @@ public class SetterInjectedController {
         this.greetingService = greetingService;
     }
 
-    public String getGreeting() {
+    public String getGreeting(){
         return greetingService.sayGreeting();
     }
 }
