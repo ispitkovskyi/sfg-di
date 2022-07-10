@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+/**
+ * This bean demonstrates implementation of interfaces, which allow to add the logic into the lifecycle flow of this bean
+ * You can do that for any bean, whose lifecycle you need to customize
+ */
 @Component
 public class LifeCycleDemoBean implements InitializingBean, DisposableBean, BeanNameAware,
         BeanFactoryAware, ApplicationContextAware {
@@ -46,12 +50,12 @@ public class LifeCycleDemoBean implements InitializingBean, DisposableBean, Bean
         System.out.println("## Application context has been set");
     }
 
-    @PostConstruct
+    @PostConstruct  //Annotation to be used to access the Spring Bean lifecycle
     public void postConstruct(){
         System.out.println("## The Post Construct annotated method has been called");
     }
 
-    @PreDestroy
+    @PreDestroy //Annotation to be used to access the Spring Bean lifecycle
     public void preDestroy() {
         System.out.println("## The Predestroy annotated method has been called");
     }

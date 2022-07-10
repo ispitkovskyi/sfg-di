@@ -4,7 +4,10 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 
-
+/**
+ * This class shows implementation of interface, which allows to modify a lifecycle of any/every bean by injecting logic
+ * into the bean initialization phase
+ */
 @Component
 public class CustomBeanPostProcessor implements BeanPostProcessor {
     @Override
