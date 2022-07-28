@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 //@Primary tells Spring to use this class to create an instance of GreetingService super-type, when @Qualifier is NOT SPECIFIED
 //For example see constructor in the MyController class
-@Primary
-@Service
+//@Primary  - see GreetingServiceConfig
+//@Service  - see GreetingServiceConfig
 public class PrimaryGreetingService implements GreetingService {
 
     @Override
