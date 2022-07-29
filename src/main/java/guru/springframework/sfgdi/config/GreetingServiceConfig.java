@@ -6,14 +6,12 @@ import com.springframework.pets.PetServiceFactory;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepository;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdi.services.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 
 /**
  * Created by igors on 7/28/22
  */
+@ImportResource("classpath:sfgdi-config.xml")  //alternatively it also can be specified in the Spring-application class - SfgDiApplication
 @Configuration
 public class GreetingServiceConfig {
 
@@ -60,12 +58,12 @@ public class GreetingServiceConfig {
     PrimaryGreetingService primaryGreetingService(){
         return new PrimaryGreetingService();
     }
-    //Having this, you may remove @Service annotation from the ConstructorGreetingService class to exclude it from Spring scan
-    @Bean
+
+    //@Bean - instead of Java config it is defined in XML config file:  src/main/resources/sfgdi-config.xml
     ConstructorGreetingService constructorGreetingService(){  //name of this method will be name of the Bean it returns!!!
         return new ConstructorGreetingService();
     }
-
+    //Having this, you may remove @Service annotation from the ConstructorGreetingService class to exclude it from Spring scan
     @Bean
     PropertyInjectedGreetingService propertyInjectedGreetingService(){
         return new PropertyInjectedGreetingService();
