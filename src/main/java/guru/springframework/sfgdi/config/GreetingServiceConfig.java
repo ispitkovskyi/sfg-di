@@ -59,10 +59,14 @@ public class GreetingServiceConfig {
         return new PrimaryGreetingService();
     }
 
-    //@Bean - instead of Java config it is defined in XML config file:  src/main/resources/sfgdi-config.xml
+    //Instead of Java config it is defined in XML config file:  src/main/resources/sfgdi-config.xml
+    /*
+    @Bean
     ConstructorGreetingService constructorGreetingService(){  //name of this method will be name of the Bean it returns!!!
         return new ConstructorGreetingService();
     }
+    */
+
     //Having this, you may remove @Service annotation from the ConstructorGreetingService class to exclude it from Spring scan
     @Bean
     PropertyInjectedGreetingService propertyInjectedGreetingService(){
