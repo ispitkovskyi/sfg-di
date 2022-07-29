@@ -1,5 +1,8 @@
 package guru.springframework.sfgdi.config;
 
+import com.springframework.pets.CatPetService;
+import com.springframework.pets.DogPetService;
+import com.springframework.pets.PetServiceFactory;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepository;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdi.services.*;
@@ -14,6 +17,22 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class GreetingServiceConfig {
 
+    @Bean
+    PetServiceFactory getPetServiceFactory(){
+        return new PetServiceFactory();
+    }
+
+    @Profile({"dog", "default"})
+    @Bean
+    DogPetService dogPetService(PetServiceFactory petServiceFactory){
+        return (DogPetService) petServiceFactory.getPetService("dog");
+    }
+
+    @Profile("cat")
+    @Bean
+    CatPetService catPetService(PetServiceFactory petServiceFactory){
+        return (CatPetService) petServiceFactory.getPetService("cat");
+    }
 
     @Profile({"ES", "default"})
     @Bean("i18nService") // - explicitly define name of bean created by this method, as it is expected in a Qualifier in controller-class I18nController

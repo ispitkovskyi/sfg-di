@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 //Configure which root-packages Spring scan should look into (by default it looks only into current package and packages underneath)
-@ComponentScan(basePackages = {"guru.springframework.sfgdi", "com.springframework.pets"})
+//@ComponentScan(basePackages = {"guru.springframework.sfgdi", "com.springframework.pets"})
 @SpringBootApplication
 public class SfgDiApplication {
 
