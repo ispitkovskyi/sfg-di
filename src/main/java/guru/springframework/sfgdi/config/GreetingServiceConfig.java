@@ -3,17 +3,32 @@ package guru.springframework.sfgdi.config;
 import com.springframework.pets.CatPetService;
 import com.springframework.pets.DogPetService;
 import com.springframework.pets.PetServiceFactory;
+import guru.springframework.sfgdi.datasource.FakeDataSource;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepository;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdi.services.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
 /**
  * Created by igors on 7/28/22
  */
-@ImportResource("classpath:sfgdi-config.xml")  //alternatively it also can be specified in the Spring-application class - SfgDiApplication
+@PropertySource("classpath:datasource.properties")  //88. Using Properties Source
+@ImportResource("classpath:sfgdi-config.xml")  //alternatively bean context can be specified in the Spring-application class - SfgDiApplication
 @Configuration
 public class GreetingServiceConfig {
+
+    //88. Using Properties Source
+    @Bean
+    FakeDataSource fakeDataSource(@Value("${guru.username}") String username,
+                                  @Value("${guru.password}") String password,
+                                  @Value("${guru.jdbcurl}") String jbcurl){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setJdbcurl(jbcurl);
+        return fakeDataSource;
+    }
 
     @Bean
     PetServiceFactory getPetServiceFactory(){
@@ -60,6 +75,9 @@ public class GreetingServiceConfig {
     }
 
     //Instead of Java config it is defined in XML config file:  src/main/resources/sfgdi-config.xml
+    /*See @ImportResource("classpath:sfgdi-config.xml") at the top of this class, which does the same as the commented
+    code below - initializes a bean instance according to the XML config file
+     */
     /*
     @Bean
     ConstructorGreetingService constructorGreetingService(){  //name of this method will be name of the Bean it returns!!!
