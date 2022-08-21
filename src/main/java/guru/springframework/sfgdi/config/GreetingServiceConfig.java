@@ -13,7 +13,9 @@ import org.springframework.context.annotation.*;
 /**
  * Created by igors on 7/28/22
  */
-@PropertySource("classpath:datasource.properties")  //88. Using Properties Source
+//File set in @PropertySource was deleted after demonstration, it just contained 3 properties with values which were moved to application.properties
+//@PropertySource("classpath:datasource.properties")  //88. Using Properties Source
+
 @ImportResource("classpath:sfgdi-config.xml")  //alternatively bean context can be specified in the Spring-application class - SfgDiApplication
 @Configuration
 public class GreetingServiceConfig {
