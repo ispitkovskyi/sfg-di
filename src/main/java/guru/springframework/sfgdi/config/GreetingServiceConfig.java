@@ -18,7 +18,7 @@ import org.springframework.context.annotation.*;
 //@PropertySource("classpath:datasource.properties")  //88. Using Properties Source
 @ImportResource("classpath:sfgdi-config.xml")  //alternatively bean context can be specified in the Spring-application class - SfgDiApplication
 @Configuration
-//Below is needed to declare SfgConstructorConfig class
+//Below needed to declare a class (or many classes), that we want to perform a constructor-binding for
 @EnableConfigurationProperties(SfgConstructorConfig.class)
 public class GreetingServiceConfig {
 
