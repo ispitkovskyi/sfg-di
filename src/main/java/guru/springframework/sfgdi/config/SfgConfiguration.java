@@ -12,7 +12,7 @@ from the application profile ("guru" - is the prefix for variables which this cl
 So if you have many properties with different prefixes, it will use only those, which have "guru" prefix
 Spring does reflection and sees names of properties in this class, taking into consideration the prefix "guru".
 So, "username" property in the class is binding to "guru.username" property in the profile. And so on with others...
-* */
+ */
 @ConfigurationProperties("guru")
 @Configuration
 public class SfgConfiguration {
