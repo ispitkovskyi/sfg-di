@@ -22,7 +22,7 @@ public class GreetingServiceConfig {
 
     //88. Using Properties Source
     //${guru.} values taken from application.properties.BAK (or application-dev.properties.BAK or application-qa.properties.BAK - depending on the profile used
-    @Bean
+/*    @Bean
     FakeDataSource fakeDataSource(@Value("${guru.username}") String username,
                                   @Value("${guru.password}") String password,
                                   @Value("${guru.jdbcurl}") String jbcurl){
@@ -30,6 +30,17 @@ public class GreetingServiceConfig {
         fakeDataSource.setUsername(username);
         fakeDataSource.setPassword(password);
         fakeDataSource.setJdbcurl(jbcurl);
+        return fakeDataSource;
+    }*/
+
+    //Spring will do dependency injection, injecting instance of SfgConfiguration here
+    //This is alternative of using property binding via @Value annotation (see commented block above)
+    @Bean
+    FakeDataSource fakeDataSource(SfgConfiguration sfgConfiguration){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(sfgConfiguration.getUsername());
+        fakeDataSource.setPassword(sfgConfiguration.getPassword());
+        fakeDataSource.setJdbcurl(sfgConfiguration.getJdbcurl());
         return fakeDataSource;
     }
 
