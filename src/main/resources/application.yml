@@ -1,0 +1,8 @@
+#This yaml replaces application.properties (analog)
+spring:
+    profiles:
+        active: dog,EN,qa
+guru:
+    username: YmlUserName
+    password: YmlPassword
+    jdbcurl: YmlUrl

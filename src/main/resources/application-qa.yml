@@ -1,0 +1,4 @@
+guru:
+  username: YmlQADBUser
+  password: YmlQAPassword
+  jdbcurl: YmlURLforQADB

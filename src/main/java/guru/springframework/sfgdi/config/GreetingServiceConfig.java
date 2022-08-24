@@ -13,7 +13,7 @@ import org.springframework.context.annotation.*;
 /**
  * Created by igors on 7/28/22
  */
-//File set in @PropertySource was deleted after demonstration, it just contained 3 properties with values which were moved to application.properties
+//File set in @PropertySource was deleted after demonstration, it just contained 3 properties with values which were moved to application.properties.BAK
 //@PropertySource("classpath:datasource.properties")  //88. Using Properties Source
 
 @ImportResource("classpath:sfgdi-config.xml")  //alternatively bean context can be specified in the Spring-application class - SfgDiApplication
@@ -21,7 +21,7 @@ import org.springframework.context.annotation.*;
 public class GreetingServiceConfig {
 
     //88. Using Properties Source
-    //${guru.} values taken from application.properties (or application-dev.properties or application-qa.properties - depending on the profile used
+    //${guru.} values taken from application.properties.BAK (or application-dev.properties.BAK or application-qa.properties.BAK - depending on the profile used
     @Bean
     FakeDataSource fakeDataSource(@Value("${guru.username}") String username,
                                   @Value("${guru.password}") String password,
