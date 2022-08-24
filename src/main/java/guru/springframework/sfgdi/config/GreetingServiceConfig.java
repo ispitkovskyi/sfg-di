@@ -24,6 +24,11 @@ public class GreetingServiceConfig {
 
     ////////////////////////////////    PROPERTIES BINDING  //////////////////////////////////////////////
     //88. Using Properties Source
+
+    // EXPLANATION (READ IT !!!):
+    // PROPERTIES BINDING - IS WHEN YOU WANT TO INIT SOME OF VARIABLES IN YOUR BEAN (CLASS) WITH VALUES FROM THE APPLICATION PROFILE
+    // (.properties or .yml)
+
     //${guru.} values taken from application.properties.BAK (or application-dev.properties.BAK or application-qa.properties.BAK - depending on the profile used
 /*    @Bean
     FakeDataSource fakeDataSource(@Value("${guru.username}") String username,
