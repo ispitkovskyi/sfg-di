@@ -8,6 +8,7 @@ import guru.springframework.sfgdi.repositories.EnglishGreetingRepository;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdi.services.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
 /**
@@ -15,11 +16,13 @@ import org.springframework.context.annotation.*;
  */
 //File set in @PropertySource was deleted after demonstration, it just contained 3 properties with values which were moved to application.properties.BAK
 //@PropertySource("classpath:datasource.properties")  //88. Using Properties Source
-
 @ImportResource("classpath:sfgdi-config.xml")  //alternatively bean context can be specified in the Spring-application class - SfgDiApplication
 @Configuration
+//Below is needed to declare SfgConstructorConfig class
+@EnableConfigurationProperties(SfgConstructorConfig.class)
 public class GreetingServiceConfig {
 
+    ////////////////////////////////    PROPERTIES BINDING  //////////////////////////////////////////////
     //88. Using Properties Source
     //${guru.} values taken from application.properties.BAK (or application-dev.properties.BAK or application-qa.properties.BAK - depending on the profile used
 /*    @Bean
@@ -35,14 +38,28 @@ public class GreetingServiceConfig {
 
     //Spring will do dependency injection, injecting instance of SfgConfiguration here
     //This is alternative of using property binding via @Value annotation (see commented block above)
-    @Bean
+/*    @Bean
     FakeDataSource fakeDataSource(SfgConfiguration sfgConfiguration){
         FakeDataSource fakeDataSource = new FakeDataSource();
         fakeDataSource.setUsername(sfgConfiguration.getUsername());
         fakeDataSource.setPassword(sfgConfiguration.getPassword());
         fakeDataSource.setJdbcurl(sfgConfiguration.getJdbcurl());
         return fakeDataSource;
+    }*/
+
+
+    //Spring will do dependency injection, injecting instance of SfgConstructorConfig here
+    //This is alternative of using property binding via @Value annotation (see commented block above)
+    //This way we create IMMUTABLE object of configuration class (no setters for properties)
+    @Bean
+    FakeDataSource fakeDataSource(SfgConstructorConfig sfgConstructorConfig){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(sfgConstructorConfig.getUsername());
+        fakeDataSource.setPassword(sfgConstructorConfig.getPassword());
+        fakeDataSource.setJdbcurl(sfgConstructorConfig.getJdbcurl());
+        return fakeDataSource;
     }
+    ////////////////////////////////    PROPERTIES BINDING  //////////////////////////////////////////////
 
     @Bean
     PetServiceFactory getPetServiceFactory(){
