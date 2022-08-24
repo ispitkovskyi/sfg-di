@@ -21,6 +21,7 @@ import org.springframework.context.annotation.*;
 public class GreetingServiceConfig {
 
     //88. Using Properties Source
+    //${guru.} values taken from application.properties (or application-dev.properties or application-qa.properties - depending on the profile used
     @Bean
     FakeDataSource fakeDataSource(@Value("${guru.username}") String username,
                                   @Value("${guru.password}") String password,
