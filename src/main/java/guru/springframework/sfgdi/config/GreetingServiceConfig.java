@@ -11,9 +11,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
-/**
+/** !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  * Created by igors on 7/28/22
- * This is a JAVA - CONFIGURATION class (Spring configuration, done using Java capabilities rather than Spring scan or
+ * !!! This is a JAVA - CONFIGURATION class (Spring configuration, done using Java capabilities rather than Spring scan or !!!
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  */
 
 //File set in @PropertySource was deleted after demonstration, it just contained 3 properties with values which were moved to application.properties.BAK
