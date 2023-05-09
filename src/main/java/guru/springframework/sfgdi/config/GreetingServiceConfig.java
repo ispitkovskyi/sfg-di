@@ -13,13 +13,14 @@ import org.springframework.context.annotation.*;
 
 /**
  * Created by igors on 7/28/22
+ * This is a JAVA - CONFIGURATION class (Spring configuration, done using Java capabilities rather than Spring scan or
  */
+
 //File set in @PropertySource was deleted after demonstration, it just contained 3 properties with values which were moved to application.properties.BAK
 //@PropertySource("classpath:datasource.properties")  //88. Using Properties Source
 @ImportResource("classpath:sfgdi-config.xml")  //alternatively bean context can be specified in the Spring-application class - SfgDiApplication
-@Configuration
-//Below needed to declare a class (or many classes), that we want to perform a constructor-binding for
-@EnableConfigurationProperties(SfgConstructorConfig.class)
+@Configuration //Means, that this is a class, which contains configuration for the Spring project
+@EnableConfigurationProperties(SfgConstructorConfig.class) //Here declare a class (or many classes), that we want to perform a constructor-binding for
 public class GreetingServiceConfig {
 
     ////////////////////////////////    PROPERTIES BINDING  //////////////////////////////////////////////
@@ -52,6 +53,10 @@ public class GreetingServiceConfig {
         return fakeDataSource;
     }*/
 
+    /**
+     * the "@Bean" annotation is used on methods, which return instances of different component-classes, to make these
+     * instances a Spring components. So, they were automatically included into the Spring context
+     */
 
     //Spring will do dependency injection, injecting instance of SfgConstructorConfig here
     //This is alternative of using property binding via @Value annotation (see commented block above)
@@ -121,14 +126,17 @@ public class GreetingServiceConfig {
     }
     */
 
-    //Having this, you may remove @Service annotation from the ConstructorGreetingService class to exclude it from Spring scan
+    /**
+     * Having this, you may remove @Service annotation from the ConstructorGreetingService class to exclude it from Spring scan
+     * @Bean annotation used to make the returned instance be a Spring component instance (included into the Spring context)
+     */
     @Bean
-    PropertyInjectedGreetingService propertyInjectedGreetingService(){
+    PropertyInjectedGreetingService propertyInjectedGreetingService(){ //name of this method will be name of the Bean it returns!!!
         return new PropertyInjectedGreetingService();
     }
 
     @Bean
-    SetterInjectedGreetingService setterInjectedGreetingService(){
+    SetterInjectedGreetingService setterInjectedGreetingService(){  //name of this method will be name of the Bean it returns!!!
         return new SetterInjectedGreetingService();
     }
 }
