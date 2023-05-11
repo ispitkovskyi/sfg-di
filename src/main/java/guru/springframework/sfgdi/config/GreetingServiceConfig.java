@@ -89,6 +89,12 @@ public class GreetingServiceConfig {
         return (CatPetService) petServiceFactory.getPetService("cat");
     }
 
+    /**
+     * We MUST create a englishGreetingRepository Spring-bean to add it to the Spring context.
+     * Without it, method "i18nService" will be INVALID, because it expects for "englishGreetingRepository" bean
+     * to be available in the spring context
+     * Try commenting this code to see the problem not having this creation of the bean in-place
+     */
     @Bean
     EnglishGreetingRepository englishGreetingRepository(){
         return new EnglishGreetingRepositoryImpl();
@@ -105,9 +111,14 @@ public class GreetingServiceConfig {
 
     @Profile("EN")
     @Bean
-    /*here name of method (-> mane of bean it creates) is different from the class name
+    /**
+     * here name of method (-> mane of bean it creates) is different from the class name
       because originally this service was annotated as @Service("i18nService") in I18nEnglishGreetingService class
       so we want to keep that name, as it's used as a Qualifier in controller-class I18nController
+     *
+     * also, it expects for the "englishGreetingRepository" bean to be availalbe in the Spring context. And
+     * this bean is created by the englishGreetingRepository() method above. The Spring context will automatically
+     * wire-up this bean into the I18nEnglishGreetingService instance
      */
     I18nEnglishGreetingService i18nService(EnglishGreetingRepository englishGreetingRepository){
         return new I18nEnglishGreetingService(englishGreetingRepository);
