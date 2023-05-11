@@ -89,15 +89,18 @@ public class GreetingServiceConfig {
         return (CatPetService) petServiceFactory.getPetService("cat");
     }
 
-    @Profile({"ES", "default"})
-    @Bean("i18nService") // - explicitly define name of bean created by this method, as it is expected in a Qualifier in controller-class I18nController
-    I18nSpanishService i18nSpanishService(){
-        return new I18nSpanishService();
-    }
-
     @Bean
     EnglishGreetingRepository englishGreetingRepository(){
         return new EnglishGreetingRepositoryImpl();
+    }
+
+    @Profile({"ES", "default"})
+    @Bean("i18nService") // - explicitly define name of bean created by this method, as it is expected in a Qualifier in controller-class I18nController
+    /* here string attribute inside of the @Bean annotation defines name of bean-instance this method creates
+    * So, because you MUST NOT have same method name twice, in this case you use @Bean annotation to set the bean name
+    * */
+    I18nSpanishService i18nSpanishService(){
+        return new I18nSpanishService();
     }
 
     @Profile("EN")
@@ -110,7 +113,7 @@ public class GreetingServiceConfig {
         return new I18nEnglishGreetingService(englishGreetingRepository);
     }
 
-    @Primary
+    @Primary //This will be default instance, returned by Spring, when instance of GreetingService super-type is requested from ApplicationContext ctx
     @Bean
     PrimaryGreetingService primaryGreetingService(){
         return new PrimaryGreetingService();
