@@ -19,7 +19,11 @@ import org.springframework.context.annotation.*;
 
 //File set in @PropertySource was deleted after demonstration, it just contained 3 properties with values which were moved to application.properties.BAK
 //@PropertySource("classpath:datasource.properties")  //88. Using Properties Source
-@ImportResource("classpath:sfgdi-config.xml")  //alternatively bean context can be specified in the Spring-application class - SfgDiApplication
+
+/** the ImportResource annotation specifies config XML file, which contains list of beans to be created in additions to @Beans defined inside this class
+ * so, now, we have a COMBINATION of configurations - 1st defined in this class (beans) and 2nd XML configuration specified in the ImportResource
+*/
+@ImportResource("classpath:sfgdi-config.xml")  //alternatively bean context (this annotatin) can be put into the Spring-application class - SfgDiApplication
 @Configuration //Means, that this is a class, which contains configuration for the Spring project
 @EnableConfigurationProperties(SfgConstructorConfig.class) //Here declare a class (or many classes), that we want to perform a constructor-binding for
 public class GreetingServiceConfig {
@@ -130,8 +134,9 @@ public class GreetingServiceConfig {
         return new PrimaryGreetingService();
     }
 
-    //Instead of Java config it is defined in XML config file:  src/main/resources/sfgdi-config.xml
-    /*See @ImportResource("classpath:sfgdi-config.xml") at the top of this class, which does the same as the commented
+    /**
+    //Instead of creating this bean in this Java-config class, it is defined in XML config file:  src/main/resources/sfgdi-config.xml
+    See @ImportResource("classpath:sfgdi-config.xml") at the top of this class, which does the same as the commented
     code below - initializes a bean instance according to the XML config file
      */
     /*
