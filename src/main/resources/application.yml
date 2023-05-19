@@ -4,11 +4,14 @@ spring:
         active:
           - dog
           - EN
-          - prod
+          - prod #- dev
 guru:
     username: YmlUserName
     password: YmlPassword
     jdbcurl: YmlUrl
+
+#"SfgConfiguration" and "SfgConstructorConfig" classes contain @ConfigurationProperties("guru") annotation, which specifies
+# properties of "guru" namespace from configuration file(s) [.properties or .yml], which will be injected into these classes by Spring
 
 ---
 # ---   above means "new profile" for spring profile configuration in YAML format

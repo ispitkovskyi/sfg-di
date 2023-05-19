@@ -7,7 +7,9 @@ import org.springframework.boot.context.properties.ConstructorBinding;
  * Created by igors on 8/24/22
  */
 // binding class variables (properties) to profile properties via constructor of bean class
-/* Because "@Configuration" is used, this class doesn't have to be initialized in GreetingServiceConfig
+/* !!! - Because "@ConstructorBinding" is used, the "@EnableConfigurationProperties(SfgConstructorConfig.class)" has to be added
+above the GreetingServiceConfig configuration class.
+
 The "guru" value inside @ConfigurationProperties helps Spring to understand which properties should be taken
 from the application profile ("guru" - is the prefix for variables which this class will have binding to)
 So if you have many properties with different prefixes, it will use only those, which have "guru" prefix
