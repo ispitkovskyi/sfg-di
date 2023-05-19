@@ -66,7 +66,7 @@ public class SfgDiApplication {
 		System.out.println(fakeDataSource.getPassword());
 		System.out.println(fakeDataSource.getJdbcurl());
 
-		System.out.println("---- Config Pros Bean -------");
+		System.out.println("---- Config Props Bean -------");
 		SfgConfiguration sfgConfiguration = ctx.getBean(SfgConfiguration.class);
 		System.out.println(sfgConfiguration.getUsername());
 		System.out.println(sfgConfiguration.getPassword());

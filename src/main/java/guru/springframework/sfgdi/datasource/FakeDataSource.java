@@ -2,6 +2,7 @@ package guru.springframework.sfgdi.datasource;
 
 /**
  * Created by igors on 8/21/22
+ * This classed used to demonstrate usage of properties from external file (ex: datasource.properties)
  */
 public class FakeDataSource {
 

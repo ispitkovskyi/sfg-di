@@ -17,8 +17,14 @@ import org.springframework.context.annotation.*;
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  */
 
-//File set in @PropertySource was deleted after demonstration, it just contained 3 properties with values which were moved to application.properties.BAK
-//@PropertySource("classpath:datasource.properties")  //88. Using Properties Source
+/**
+ * File set in @PropertySource was deleted after demonstration, it just contained 3 properties with values which
+ * were moved to application.properties.BAK
+ * For more information seet 88. Using Properties Source
+ *
+ * Content of this properties file (properties values) will be available for use inside of Spring context
+ */
+//@PropertySource("classpath:datasource.properties")
 
 /** the ImportResource annotation specifies config XML file, which contains list of beans to be created in additions to @Beans defined inside this class
  * so, now, we have a COMBINATION of configurations - 1st defined in this class (beans) and 2nd XML configuration specified in the ImportResource
@@ -28,15 +34,18 @@ import org.springframework.context.annotation.*;
 @EnableConfigurationProperties(SfgConstructorConfig.class) //Here declare a class (or many classes), that we want to perform a constructor-binding for
 public class GreetingServiceConfig {
 
-    ////////////////////////////////    PROPERTIES BINDING  //////////////////////////////////////////////
-    //88. Using Properties Source
-
-    // EXPLANATION (READ IT !!!):
-    // PROPERTIES BINDING - IS WHEN YOU WANT TO INIT SOME OF VARIABLES IN YOUR BEAN (CLASS) WITH VALUES FROM THE APPLICATION PROFILE
-    // (.properties or .yml)
-
-    //${guru.} values taken from application.properties.BAK (or application-dev.properties.BAK or application-qa.properties.BAK - depending on the profile used
-/*    @Bean
+    /**
+     * ////////    PROPERTIES BINDING  ////////
+     * 88. Using Properties Source
+     *
+     * EXPLANATION (READ IT !!!):
+     * PROPERTIES BINDING - IS WHEN YOU WANT TO INIT SOME OF VARIABLES IN YOUR BEAN (CLASS) WITH VALUES FROM THE APPLICATION PROFILE
+     * (.properties or .yml)
+     *
+     *${guru.} values taken from application.properties.BAK (or application-dev.properties.BAK
+     * or application-qa.properties.BAK - depending on the profile used
+     */
+    /*@Bean
     FakeDataSource fakeDataSource(@Value("${guru.username}") String username,
                                   @Value("${guru.password}") String password,
                                   @Value("${guru.jdbcurl}") String jbcurl){
@@ -47,8 +56,10 @@ public class GreetingServiceConfig {
         return fakeDataSource;
     }*/
 
-    //Spring will do dependency injection, injecting instance of SfgConfiguration here
-    //This is alternative of using property binding via @Value annotation (see commented block above)
+    /**
+     * Spring will do dependency injection, injecting instance of SfgConfiguration here
+     * This is alternative of using property binding via @Value annotation (see commented block above)
+     */
 /*    @Bean
     FakeDataSource fakeDataSource(SfgConfiguration sfgConfiguration){
         FakeDataSource fakeDataSource = new FakeDataSource();
