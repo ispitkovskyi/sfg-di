@@ -11,7 +11,7 @@ guru:
     jdbcurl: YmlUrl
 
 ---
-# --- above means "new profile" for spring profile configuration in YAML format
+# ---   above means "new profile" for spring profile configuration in YAML format
 spring:
     config:
         activate:
