@@ -19,7 +19,7 @@ import org.springframework.context.annotation.*;
 
 /**
  * File set in @PropertySource was deleted after demonstration, it just contained 3 properties with values which
- * were moved to application.properties.BAK
+ * were moved to application.properties
  * For more information seet 88. Using Properties Source
  *
  * Content of this properties file (properties values) will be available for use inside of Spring context
@@ -42,8 +42,8 @@ public class GreetingServiceConfig {
      * PROPERTIES BINDING - IS WHEN YOU WANT TO INIT SOME OF VARIABLES IN YOUR BEAN (CLASS) WITH VALUES FROM THE APPLICATION PROFILE
      * (.properties or .yml)
      *
-     *${guru.} values taken from application.properties.BAK (or application-dev.properties.BAK
-     * or application-qa.properties.BAK - depending on the profile used
+     *${guru.} values taken from application.properties (or application-dev.properties
+     * or application-qa.properties - depending on the profile used
      */
     /*@Bean
     FakeDataSource fakeDataSource(@Value("${guru.username}") String username,
