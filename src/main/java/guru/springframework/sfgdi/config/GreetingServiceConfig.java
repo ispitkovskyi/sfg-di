@@ -26,10 +26,12 @@ import org.springframework.context.annotation.*;
  */
 //@PropertySource("classpath:datasource.properties")
 
-/** the ImportResource annotation specifies config XML file, which contains list of beans to be created in additions to @Beans defined inside this class
- * so, now, we have a COMBINATION of configurations - 1st defined in this class (beans) and 2nd XML configuration specified in the ImportResource
+/** the ImportResource annotation specifies config XML file, which contains list of beans to be created
+ * in additions to @Beans defined inside this class, so now we have a COMBINATION of configurations:
+ * - 1st defined in this class (beans)
+ * - 2nd XML configuration specified in the ImportResource
 */
-@ImportResource("classpath:sfgdi-config.xml")  //alternatively bean context (this annotatin) can be put into the Spring-application class - SfgDiApplication
+@ImportResource("classpath:sfgdi-config.xml")  //alternatively bean context (this annotation) can be put into the Spring-application class - SfgDiApplication
 @Configuration //Means, that this is a class, which contains configuration for the Spring project
 @EnableConfigurationProperties(SfgConstructorConfig.class) //Here declare a class (or many classes), that we want to perform a constructor-binding for
 public class GreetingServiceConfig {
@@ -39,8 +41,8 @@ public class GreetingServiceConfig {
      * 88. Using Properties Source
      *
      * EXPLANATION (READ IT !!!):
-     * PROPERTIES BINDING - IS WHEN YOU WANT TO INIT SOME OF VARIABLES IN YOUR BEAN (CLASS) WITH VALUES FROM THE APPLICATION PROFILE
-     * (.properties or .yml)
+     * PROPERTIES BINDING - IS WHEN YOU WANT TO INIT SOME OF VARIABLES IN YOUR BEAN (CLASS) WITH VALUES FROM THE
+     * APPLICATION PROFILE - (.properties or .yml)
      *
      *${guru.} values taken from application.properties (or application-dev.properties
      * or application-qa.properties - depending on the profile used
@@ -71,7 +73,7 @@ public class GreetingServiceConfig {
 
     /**
      * the "@Bean" annotation is used on methods, which return instances of different component-classes, to make these
-     * instances a Spring components. So, they were automatically included into the Spring context
+     * instances a Spring components. So, they are automatically included into the Spring context
      */
 
     //Spring will do dependency injection, injecting instance of SfgConstructorConfig here
